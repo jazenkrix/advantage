@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>Advantage</title>
+  <script type='text/javascript' src='/js/jquery.js'></script>
+  <script type='text/javascript' src='/js/dice_roller.js'></script>
+  <script type='text/javascript' src='/js/advantage.js'></script>
+  <link rel="stylesheet" href="/css/advantage.css" type="text/css" media="screen" />
+</head>
+<body>
+<div id="header">
+  <div id="top-nav">
+    <ul id="nav">
+      <li><a href="/">Home</a></li>
+      <li><a id="new" href="#">New +</a>
+        <ul>
+          <li><a href="#new_encounter" rel="modal:open">Encounter</a></li>
+          <li><a href="#new_player" rel="modal:open">Player</a></li>
+          <li><a href="#new_npc" rel="modal:open">NPC</a></li>
+          <li><a href="#new_monster" rel="modal:open">Monster</a></li>
+        </ul>
+      </li>
+      <li><a href="/monsters">Monsters</a></li>
+    </ul>
+    <div id="inputs">
+      <label for="user-input">Roll: </label>
+      <input id="user-input" type="text" />
+      <button id="d20-button">d20</button>
+    </div>
+  </div>
+</div>
+<div id="right-sidebar">
+  <div id="messages"></div>
+</div>
+<%= yield %>
+</body>
+</html>
