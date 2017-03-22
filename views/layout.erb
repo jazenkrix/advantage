@@ -2,8 +2,10 @@
 <head>
   <title>Advantage</title>
   <script type='text/javascript' src='/js/jquery.js'></script>
+  <script type='text/javascript' src='/js/jquery.modal.js'></script>
   <script type='text/javascript' src='/js/dice_roller.js'></script>
   <script type='text/javascript' src='/js/advantage.js'></script>
+  <link rel="stylesheet" href="/css/jquery.modal.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="/css/advantage.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="/css/statblock.css" type="text/css" media="screen" />
 </head>
@@ -34,6 +36,115 @@
 </div>
 <div id="right-sidebar">
   <div id="messages"></div>
+</div>
+<div id="message"></div>
+<div id="new_encounter" class="modal" style="display:none;">
+  <form id="new_encounter_form" action=""> 
+    <h3>New Encounter</h3>
+    <p>
+      <label for="name">Name:</label>
+      <input class="tb-large" id="name" name="name" type="text" /> 
+    </p>
+    <p>
+      <label for="desc">Description:</label>
+      <textarea rows="10" cols="63" id="desc" name="desc"></textarea>
+    </p>
+    <p>
+      <span><input type="submit" value="Save"/> </span>
+    </p>
+  </form>
+</div>
+<div id="new_player" class="modal" style="display:none;">
+  <form id="new_player_form" action="" >  
+    <h3>New Player</h3>
+    <p>
+      <label for="name">Name:</label>
+      <input class="tb-large" id="name" name="name" type="text" /> 
+    </p>
+    <p>
+      <span><input class="submit-button" type="submit" value="Save" /> </span>
+    </p>
+  </form>
+</div>
+<div id="new_npc" class="modal" style="display:none;">
+  <form id="new_npc_form" action="" >  
+    <h3>New Non-Player Character</h3>
+    <p>
+      <label for="name">Name:</label>
+      <input class="tb-large" id="name" name="name" type="text" /> 
+    </p>
+    <p>
+      <span><input class="submit-button" type="submit" value="Save" /> </span>
+    </p>
+  </form>
+</div>
+
+<!--Modals-->
+<div id="new_player" class="modal" style="display:none;">
+  <form id="new_player_form" action="" >  
+    <h3>New Player</h3>
+    <p>
+      <label for="name">Name:</label>
+      <input class="tb-large" id="name" name="name" type="text" /> 
+    </p>
+    <p>
+      <span><input class="submit-button" type="submit" value="Save" /> </span>
+    </p>
+  </form>
+</div>
+<div id="new_npc" class="modal" style="display:none;">
+  <form id="new_npc_form" action="" >  
+    <h3>New Non-Player Character</h3>
+    <p>
+      <label for="name">Name:</label>
+      <input class="tb-large" id="name" name="name" type="text" /> 
+    </p>
+    <p>
+      <span><input class="submit-button" type="submit" value="Save" /> </span>
+    </p>
+  </form>
+</div>
+<div id="new_monster" class="modal" style="display:none;">
+  <form id="new_monster_form" action="" >  
+    <h3>New Monster</h3>
+    <label class="aligned" for="name">Name:</label>
+    <input class="tb-large" id="name" name="name" type="text" /> 
+    <p>
+      <label class="aligned" for="size">Size:</label>
+      <select id="size" name="size">
+        <option value="tiny">Tiny</option>
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="huge">Huge</option>
+        <option value="gargantuan">Gargantuan</option>
+      </select> 
+    </p>
+    <p>
+      <label class="aligned" for="type">Type:</label>
+      <input class="tb-medium" id="type" name="type" type="text" /> 
+    </p>
+    <p>
+      <label class="aligned" for="subtype">Subtype:</label>
+      <input class="tb-medium" id="subtype" name="subtype" type="text" /> 
+    </p>
+    <p>
+      <label class="aligned" for="alignment">Alignment:</label>
+      <select id="alignment" name="alignment">
+        <option value="lawful goog">Lawful Good</option>
+        <option value="neutral good">Neutral Good</option>
+        <option value="chaotic good" selected>Chaotic Good</option>
+        <option value="lawful neutral">Lawful Neutral</option>
+        <option value="neutral">Neutral</option>
+        <option value="chaotic neutral">Chaotic Neutral</option>
+        <option value="lawful evil">Lawful Evil</option>
+        <option value="neutral evil">Neutral Evil </option>
+        <option value="chaotic evil">Chaotic Evil</option>
+      </select> 
+    </p>
+    <p>
+      <span><input class="submit-button" type="submit" value="Save" /> </span>
+    </p>
+  </form>
 </div>
 </body>
 </html>

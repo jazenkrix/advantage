@@ -116,6 +116,20 @@ body {
     background-color: #D3E5F5;
     border-top: 2px solid white;
 }
+.success {
+    padding: 6px;
+    font-size: 20px;
+    font-weight: 300;
+    background-color: #AFFF94;
+    border-top: 2px solid white;
+}
+.failure {
+    padding: 6px;
+    font-size: 20px;
+    font-weight: 300;
+    background-color: #FF9494;
+    border-top: 2px solid white;
+}
 .attack-result {
     background-color: #F2F5D3;
     border-top: 2px solid white;
@@ -136,7 +150,6 @@ body {
     font-family: 'Libre Baskerville', Garamond, serif;
     color: #922610;
     font-size: 16px;
-    /*line-height: 1.2em;*/
     margin: 10px;
     letter-spacing: 1px;
     font-variant: small-caps;
@@ -170,14 +183,24 @@ body {
     font-weight: bold;
 }
 .attack-rolls {
+    margin-left: 20px;
     padding: 6px;
     font-size: 20px;
     font-weight: 300;
-    /*margin-left: 10px;*/
 }
 .damage-rolls {
+    margin-left: 20px;
     padding: 6px;
     font-size: 20px;
     font-weight: 300;
-    /*margin-left: 10px;*/
+}
+.submit-button
+{
+    border: 2px solid #7A200D;
+    padding: 5px 10px !important;
+    font-size: 14px !important;
+    background-color: white;
+    font-weight: bold;
+    color: #7A200D;
+    margin-top: 20px;
 }

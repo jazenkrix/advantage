@@ -52,31 +52,31 @@
       <svg height="5" width="100%" class="tapered-rule">
         <polyline points="0,0 400,2.5 0,5"></polyline>
       </svg>
-      <% unless @creature.saving_throws.empty? %>
+      <% unless @creature.saving_throws.to_s.empty? %>
           <div class="property-line">
             <h4>Saving Throws</h4>
             <p><%= @creature.saving_throws %></p>
           </div>
       <% end %>
-      <% unless @creature.skills.empty? %>
+      <% unless @creature.skills.to_s.empty? %>
           <div class="property-line">
             <h4>Skills</h4>
             <p><%= @creature.skills %></p>
           </div>
       <% end %>
-      <% unless @creature.dmg_vulnerabilities.empty? %>
+      <% unless @creature.dmg_vulnerabilities.to_s.empty? %>
           <div class="property-line">
             <h4>Damage Vulnerabilities</h4>
             <p><%= @creature.dmg_vulnerabilities %></p>
           </div>
       <% end %>
-      <% unless @creature.dmg_resistances.empty? %>
+      <% unless @creature.dmg_resistances.to_s.empty? %>
           <div class="property-line">
             <h4>Damage Resistances</h4>
             <p><%= @creature.dmg_resistances %></p>
           </div>
       <% end %>
-      <% unless @creature.dmg_immunities.empty? %>
+      <% unless @creature.dmg_immunities.to_s.empty? %>
           <div class="property-line">
             <h4>Damage Immunities</h4>
             <p><%= @creature.dmg_immunities %></p>
@@ -88,19 +88,19 @@
             <p><%= @creature.con_immunities %></p>
           </div>
       <% end %>
-      <% unless @creature.senses.empty? %>
+      <% unless @creature.senses.to_s.empty? %>
           <div class="property-line">
             <h4>Senses</h4>
             <p><%= @creature.senses %></p>
           </div>
       <% end %>
-      <% unless @creature.languages.empty? %>
+      <% unless @creature.languages.to_s.empty? %>
           <div class="property-line">
             <h4>Languages</h4>
             <p><%= @creature.languages %></p>
           </div>
       <% end %>
-      <% unless @creature.challenge_rating.empty? %>
+      <% unless @creature.challenge_rating.to_s.empty? %>
           <div class="property-line">
             <h4>Challenge</h4>
             <p><%= @creature.challenge_rating %></p>

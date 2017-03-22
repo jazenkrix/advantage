@@ -34,3 +34,24 @@ end
 get '/' do
   erb :index
 end
+
+post '/player/new' do
+  @creature = Creature.find_or_create_by(name: params[:name])
+  @creature.update(pc: true)
+end
+
+post '/npc/new' do
+  @creature = Creature.find_or_create_by(name: params[:name])
+  @creature.update(npc: true)
+end
+
+post '/monster/new' do
+  @creature = Creature.find_or_create_by(name: params[:name])
+  @creature.update(size: params[:size], category: params[:type], subtype: params[:subtype],
+                   alignment: params[:alignment], monster: true)
+end
+
+get '/monster/:id' do
+  @creature = Creature.find(params[:id])
+  erb :statblock
+end
