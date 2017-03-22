@@ -5,6 +5,7 @@
   <script type='text/javascript' src='/js/dice_roller.js'></script>
   <script type='text/javascript' src='/js/advantage.js'></script>
   <link rel="stylesheet" href="/css/advantage.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="/css/statblock.css" type="text/css" media="screen" />
 </head>
 <body>
 <div id="header">
@@ -28,9 +29,11 @@
     </div>
   </div>
 </div>
+<div id="content">
+  <%= yield %>
+</div>
 <div id="right-sidebar">
   <div id="messages"></div>
 </div>
-<%= yield %>
 </body>
 </html>

@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <td class="stat-label">STR</td>
+    <td class="stat-label">DEX</td>
+    <td class="stat-label">CON</td>
+    <td class="stat-label">INT</td>
+    <td class="stat-label">WIS</td>
+    <td class="stat-label">CHA</td>
+  </tr>
+  <tr>
+    <td class="stat-score"><%= @creature.strength %> (<%= format_modifier(@creature.strength) %>)</td>
+    <td class="stat-score"><%= @creature.dexterity %> (<%= format_modifier(@creature.dexterity) %>)</td>
+    <td class="stat-score"><%= @creature.constitution %> (<%= format_modifier(@creature.constitution) %>)</td>
+    <td class="stat-score"><%= @creature.intelligence %> (<%= format_modifier(@creature.intelligence) %>)</td>
+    <td class="stat-score"><%= @creature.wisdom %> (<%= format_modifier(@creature.wisdom) %>)</td>
+    <td class="stat-score"><%= @creature.charisma %> (<%= format_modifier(@creature.charisma) %>)</td>
+  </tr>
+</table>
+<span class="thick-red-line"></span>
