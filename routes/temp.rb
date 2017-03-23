@@ -3,12 +3,6 @@ get '/sandbox/:id' do
   erb :statblock
 end
 
-get '/statblock_old/:id' do
-  @creature = Creature.find(params[:id])
-  erb :statblock_old, layout: false
-end
-
-
 get '/monster/process' do
     @creature = Creature.find_or_create_by(name: 'Intellect Devourer')
 

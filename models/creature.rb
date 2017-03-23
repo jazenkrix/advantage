@@ -15,14 +15,6 @@ class Creature < ActiveRecord::Base
     "#{self.size.capitalize} #{self.creature_type.downcase}, #{self.alignment}"
   end
 
-  def armor
-    if self.armor_type
-      "#{self.armor_class} (#{armor_type})"
-    else
-      self.armor_class
-    end
-  end
-
   def health
     "#{self.hit_dice} + #{((self.constitution - 10)/2) * self.hit_dice.split('d').first.to_i}"
   end
