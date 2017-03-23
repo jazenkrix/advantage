@@ -1,190 +1,191 @@
-<div class="stat-block wide">
-  <div class="section-left">
-    <div class="creature-heading">
-      <h1><%= @creature.name %></h1>
-      <h2><%= @creature.subhead %></h2>
-    </div> <!-- creature heading -->
-    <svg height="5" width="100%" class="tapered-rule">
-      <polyline points="0,0 400,2.5 0,5"></polyline>
-    </svg>
-    <div class="top-stats">
-      <div class="property-line">
-        <h4>Armor Class</h4>
-        <p><%= @creature.armor %></p>
-      </div> <!-- property line -->
-      <div class="property-line">
-        <h4>Hit Points</h4>
-        <p><%= @creature.health %></p>
-      </div> <!-- property line -->
-      <div class="property-line">
-        <h4>Speed</h4>
-        <p><%= @creature.speed %></p>
-      </div> <!-- property line -->
-      <svg height="5" width="100%" class="tapered-rule">
-        <polyline points="0,0 400,2.5 0,5"></polyline>
-      </svg>
-      <div class="abilities">
-        <div class="ability-strength">
-          <h4>STR</h4>
-          <p><%= @creature.strength %> (<%= format_modifier(@creature.strength) %>)</p>
-        </div> <!-- ability strength -->
-        <div class="ability-dexterity">
-          <h4>DEX</h4>
-          <p><%= @creature.dexterity %> (<%= format_modifier(@creature.dexterity) %>)</p>
-        </div> <!-- ability dexterity -->
-        <div class="ability-constitution">
-          <h4>CON</h4>
-          <p><%= @creature.constitution %> (<%= format_modifier(@creature.constitution) %>)</p>
-        </div> <!-- ability constitution -->
-        <div class="ability-intelligence">
-          <h4>INT</h4>
-          <p><%= @creature.intelligence %> (<%= format_modifier(@creature.intelligence) %>)</p>
-        </div> <!-- ability intelligence -->
-        <div class="ability-wisdom">
-          <h4>WIS</h4>
-          <p><%= @creature.wisdom %> (<%= format_modifier(@creature.wisdom) %>)</p>
-        </div> <!-- ability wisdom -->
-        <div class="ability-charisma">
-          <h4>CHA</h4>
-          <p><%= @creature.charisma %> (<%= format_modifier(@creature.charisma) %>)</p>
-        </div> <!-- ability charisma -->
-      </div> <!-- abilities -->
-      <svg height="5" width="100%" class="tapered-rule">
-        <polyline points="0,0 400,2.5 0,5"></polyline>
-      </svg>
-      <% unless @creature.saving_throws.to_s.empty? %>
-          <div class="property-line">
-            <h4>Saving Throws</h4>
-            <p><%= @creature.saving_throws %></p>
+<div class="detail-content">
+  <div class="monster-info">
+    <div class="details-container">
+      <div class="creature-heading">
+        <h1><%= @creature.name %></h1>
+        <h2><%= @creature.subhead %></h2>
+      </div>
+    </div>
+    <div class="line monster height3 marginBottom20"></div>
+    <div class="abilities">
+      <div id="str">
+        <span class="title">STR</span>
+        <span class="score"><%= @creature.strength %></span>
+        <span class="modifier">(<%= format_modifier(@creature.strength) %>)</span>
+      </div>
+      <div id="dex">
+        <span class="title">DEX</span>
+        <span class="score"><%= @creature.dexterity %></span>
+        <span class="modifier">(<%= format_modifier(@creature.dexterity) %>)</span>
+      </div>
+      <div id="con">
+        <span class="title">CON</span>
+        <span class="score"><%= @creature.constitution %></span>
+        <span class="modifier">(<%= format_modifier(@creature.constitution) %>)</span>
+      </div>
+      <div id="int">
+        <span class="title">INT</span>
+        <span class="score"><%= @creature.intelligence %></span>
+        <span class="modifier">(<%= format_modifier(@creature.intelligence) %>)</span>
+      </div>
+      <div id="wis">
+        <span class="title">WIS</span>
+        <span class="score"><%= @creature.wisdom %></span>
+        <span class="modifier">(<%= format_modifier(@creature.wisdom) %>)</span>
+      </div>
+      <div id="cha">
+        <span class="title">CHA</span>
+        <span class="score"><%= @creature.charisma %></span>
+        <span class="modifier">(<%= format_modifier(@creature.charisma) %>)</span>
+      </div>
+    </div>
+    <div class="line monster height3 marginBottom20"></div>
+    <div class="quick-info">
+      <div id="challenge">
+        <span class="title">Challenge</span>
+        <span class="primary"><%= @creature.challenge_rating %></span>
+        <span class="secondary">(0 XP)</span>
+      </div>
+      <div id="armor-class">
+        <span class="title">Armor Class</span>
+        <span class="primary"><%= @creature.armor_class %></span>
+        <span class="secondary">(<%= @creature.armor_type %>)</span>
+      </div>
+      <div id="hp">
+        <span class="title">Hit Points</span>
+        <span class="primary"><%= @creature.hit_points %></span>
+        <span class="secondary">(<%= @creature.health %>)</span>
+      </div>
+      <div id="speed">
+        <span class="title">Speed</span>
+        <span class="primary"><%= @creature.base_speed %></span>
+        <span class="secondary">(<%= @creature.movements %>)</span>
+      </div>
+    </div>
+    <div class="line monster marginBottom20"></div>
+    <div class="info-block">
+      <% unless @creature.saving_throws.blank? %>
+          <div id="saving-throws">
+            <span class="title">Saving Throws</span>
+            <span class="description"><%= @creature.saving_throws %></span>
           </div>
       <% end %>
-      <% unless @creature.skills.to_s.empty? %>
-          <div class="property-line">
-            <h4>Skills</h4>
-            <p><%= @creature.skills %></p>
+      <% unless @creature.skills.blank? %>
+          <div id="skills">
+            <span class="title">Skills</span>
+            <span class="description"><%= @creature.skills %></span>
           </div>
       <% end %>
-      <% unless @creature.dmg_vulnerabilities.to_s.empty? %>
-          <div class="property-line">
-            <h4>Damage Vulnerabilities</h4>
-            <p><%= @creature.dmg_vulnerabilities %></p>
+      <% unless @creature.dmg_vulnerabilities.blank? %>
+          <div id="damage-vulnerabilities">
+            <span class="title">Damage Vulnerabilities</span>
+            <span class="description"><%= @creature.dmg_vulnerabilities %></span>
           </div>
       <% end %>
-      <% unless @creature.dmg_resistances.to_s.empty? %>
-          <div class="property-line">
-            <h4>Damage Resistances</h4>
-            <p><%= @creature.dmg_resistances %></p>
+      <% unless @creature.dmg_resistances.blank? %>
+          <div id="damage-resistances">
+            <span class="title">Damage Resistances</span>
+            <span class="description"><%= @creature.dmg_resistances %></span>
           </div>
       <% end %>
-      <% unless @creature.dmg_immunities.to_s.empty? %>
-          <div class="property-line">
-            <h4>Damage Immunities</h4>
-            <p><%= @creature.dmg_immunities %></p>
+      <% unless @creature.dmg_immunities.blank? %>
+          <div id="damage-immunities">
+            <span class="title">Damage Immunities</span>
+            <span class="description"><%= @creature.dmg_immunities %></span>
           </div>
       <% end %>
-      <% unless @creature.con_immunities.to_s.empty? %>
-          <div class="property-line">
-            <h4>Condition Immunities</h4>
-            <p><%= @creature.con_immunities %></p>
+      <% unless @creature.con_immunities.blank? %>
+          <div id="damage-immunities">
+            <span class="title">Condition Immunities</span>
+            <span class="description"><%= @creature.con_immunities %></span>
           </div>
       <% end %>
-      <% unless @creature.senses.to_s.empty? %>
-          <div class="property-line">
-            <h4>Senses</h4>
-            <p><%= @creature.senses %></p>
+      <% unless @creature.senses.blank? %>
+          <div id="senses">
+            <span class="title">Senses</span>
+            <span class="description"><%= @creature.senses %></span>
           </div>
       <% end %>
-      <% unless @creature.languages.to_s.empty? %>
-          <div class="property-line">
-            <h4>Languages</h4>
-            <p><%= @creature.languages %></p>
+      <% unless @creature.languages.blank? %>
+          <div id="languages">
+            <span class="title">Languages</span>
+            <span class="description"><%= @creature.languages %></span>
           </div>
       <% end %>
-      <% unless @creature.challenge_rating.to_s.empty? %>
-          <div class="property-line">
-            <h4>Challenge</h4>
-            <p><%= @creature.challenge_rating %></p>
-          </div>
-      <% end %>
-    </div> <!-- top stats -->
-    <svg height="5" width="100%" class="tapered-rule">
-      <polyline points="0,0 400,2.5 0,5"></polyline>
-    </svg>
-    <% if @creature.special_abilities.count > 0 %>
-        <% @creature.special_abilities.each do |ability| %>
-            <div class="property-block">
-              <h4><%= ability.name %>.</h4>
+    </div>
+    <div class="line monster marginBottom20"></div>
+    <div class="more-info-content">
+      <% if @creature.special_abilities.count > 0 %>
+          <% @creature.special_abilities.each do |ability| %>
               <p>
+                <strong>
+                  <%= ability.name %>.
+                </strong>
                 <%= ability.desc %>
               </p>
-            </div>
-        <% end %>
-    <% end %>
-  </div> <!-- section left -->
-  <div class="section-right">
-    <div class="actions">
+          <% end %>
+      <% end %>
       <h3>Actions</h3>
       <% if @creature.actions.count > 0 %>
           <% @creature.actions.each do |action| %>
               <% next if action.action_type.eql?('Legendary') || action.action_type.eql?('Reaction')%>
-              <div class="property-block">
-                <% if action.damage.size > 0 %>
-                    <h4><a class="attack" id="<%= @creature.name %>/<%= action.name %>/<%= action.to_hit %>/<%= action.damage %>" href="#"><%= action.name %>.</a></h4>
-                    <p><%= action.desc %></p>
+              <p>
+                <% if action.damage && action.damage.size > 0 %>
+                    <strong>
+                      <a class="attack" id="<%= @creature.name %>/<%= action.name %>/<%= action.to_hit %>/<%= action.damage %>" href="#">
+                        <%= action.name %>.
+                      </a>
+                    </strong> <%= action.desc %>
                 <% else %>
-                    <h4><%= action.name %>.</h4>
-                    <p><%= action.desc %></p>
+                    <strong><%= action.name %>.</strong> <%= action.desc %>
                 <% end %>
-              </div>
+              </p>
           <% end %>
       <% end %>
-    </div> <!-- actions -->
-    <div class="actions">
+
       <% if @creature.legendary_actions.count > 0 %>
           <h3>Legendary Actions</h3>
-          <div class="property-block">
-            <p>
-              The <%= @creature.name.downcase %> can take 3 legendary actions, choosing  from the options below. Only one
-              legendary action option can be used at a time and only at the end of another creature’s turn. The
-              <%= @creature.name.downcase %> regains spent legendary actions at the start of its turn.
-            </p>
-          </div>
+          <p>
+            The <%= @creature.name.downcase %> can take 3 legendary actions, choosing  from the options below. Only one
+            legendary action option can be used at a time and only at the end of another creature’s turn. The
+            <%= @creature.name.downcase %> regains spent legendary actions at the start of its turn.
+          </p>
+
           <% @creature.legendary_actions.each do |legendary_action| %>
-              <div class="property-block">
-                <% if legendary_action.name.size > 0 %>
-                    <p>
-                      <% if legendary_action.damage && legendary_action.damage.size > 0 %>
-                        <h4><a class="attack" href="<%= legendary_action.to_hit %>/<%= legendary_action.damage %>"><%= legendary_action.name %>.</a></h4>
-                        <p><%= legendary_action.desc %></p>
+              <% if legendary_action.name.size > 0 %>
+                  <p>
+                    <% if legendary_action.damage && legendary_action.damage.size > 0 %>
+                        <strong>
+                          <a class="attack" id="<%= @creature.name %>/<%= legendary_action.name %>/<%= legendary_action.to_hit %>/<%= legendary_action.damage %>" href="#">
+                            <%= legendary_action.name %>.
+                          </a>
+                        </strong> <%= legendary_action.desc %>
                     <% else %>
-                        <h4><%= legendary_action.name %>.</h4>
-                        <p><%= legendary_action.desc %></p>
+                        <strong><%= legendary_action.name %>.</strong> <%= legendary_action.desc %>
                     <% end %>
-                    </p>
-                <% end %>
-              </div>
+                  </p>
+              <% end %>
           <% end %>
       <% end %>
-    </div> <!-- actions -->
-    <div class="actions">
+
       <% if @creature.reactions.count > 0 %>
           <h3>Rections</h3>
           <% @creature.reactions.each do |reaction| %>
-              <div class="property-block">
+              <p>
                 <% if reaction.name.size > 0 %>
-                    <p>
-                      <% if reaction.damage && reaction.damage.size > 0 %>
-                        <h4><a class="attack" href="<%= reaction.to_hit %>/<%= reaction.damage %>"><%= reaction.name %>.</a></h4>
-                        <p><%= reaction.desc %></p>
+                    <% if reaction.damage && reaction.damage.size > 0 %>
+                        <strong>
+                          <a class="attack" id="<%= @creature.name %>/<%= reaction.name %>/<%= reaction.to_hit %>/<%= reaction.damage %>" href="#">
+                            <%= reaction.name %>.
+                          </a>
+                        </strong> <%= reaction.desc %>
                     <% else %>
-                        <h4><%= reaction.name %>.</h4>
-                        <p><%= reaction.desc %></p>
+                        <strong><%= reaction.name %>.</strong> <%= reaction.desc %>
                     <% end %>
-                    </p>
                 <% end %>
-              </div>
+              </p>
           <% end %>
       <% end %>
-    </div> <!-- actions -->
-  </div> <!-- section right -->
-</div> <!-- stat block -->
+    </div>
+  </div>
+</div>
