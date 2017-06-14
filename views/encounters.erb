@@ -1,0 +1,13 @@
+<% @encounters = Encounter.all %>
+<div id="container">
+  <h1>Encounters</h1>
+  <ul>
+    <% @encounters.each do |encounter| %>
+        <li><a href="/encounter/<%= encounter.id %>"><%= encounter.name %></a></li>
+    <% end %>
+  </ul>
+  <p>
+    <a href="#new_encounter" rel="modal:open">Add Encounter</a>
+  </p>
+</div>
+

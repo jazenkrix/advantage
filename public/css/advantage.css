@@ -28,7 +28,8 @@ body {
     right: 0;
     width: 20%;
     height: 100%;
-    border-left: 2px solid #333;
+    margin-right:6px;
+    margin-left:6px;
 }
 #nav, #nav ul {
     margin: 0;
@@ -95,7 +96,7 @@ body {
     -moz-border-radius: 8px;
     border-radius: 8px;
 }
-#d20-button {
+.d4-button, .d6-button, .d8-button, .d10-button, .d12-button, .d20-button, .d100-button {
     margin-top: 3px;
     background-color: #333;
     border: 2px solid white;
@@ -109,41 +110,53 @@ body {
     -moz-border-radius: 8px;
     border-radius: 8px;
 }
+.tb-small {
+    width: 30px;
+    margin-right: 10px;
+}
+.tb-medium {
+    width: 125px;
+    margin-right: 10px;
+}
+.tb-large {
+    width: 250px;
+    margin-right: 10px;
+}
 .roll {
+    margin-top: 6px;
     padding: 6px;
     font-size: 20px;
     font-weight: 300;
-    background-color: #D3E5F5;
-    border-top: 2px solid white;
+    background-color: #E9F9FE;
+    border: 1px solid black;
 }
 .success {
+    margin-top: 6px;
     padding: 6px;
     font-size: 20px;
     font-weight: 300;
     background-color: #AFFF94;
-    border-top: 2px solid white;
+    border: 1px solid black;
 }
 .failure {
+    margin-top: 6px;
     padding: 6px;
     font-size: 20px;
     font-weight: 300;
     background-color: #FF9494;
-    border-top: 2px solid white;
+    border-top: 1px solid black;
 }
 .attack-result {
-    background-color: #F2F5D3;
-    border-top: 2px solid white;
+    margin-top: 6px;
     padding: 8px;
+    border: 1px solid black;
 }
 .result-box {
-    background-color: white;
-    border: 1px solid black;
     padding: 4px 0;
 }
 .damage-box {
-    background-color: white;
-    border: 1px solid black;
-    margin-top: 8px;
+    border-top: 1px solid #922610;
+    margin-top: 4px;
     padding: 4px 0;
 }
 .attacker-name {
@@ -194,6 +207,9 @@ body {
     font-size: 20px;
     font-weight: 300;
 }
+.damage-raw {
+    font-size: 14px;
+}
 .submit-button
 {
     border: 2px solid #A70D0D;
@@ -213,7 +229,8 @@ body {
     margin-bottom: 10px;
     font-style: normal;
     font-size: 16px;
-    line-height: 2.1
+    line-height: 2.1;
+    padding-bottom: 50px;
 }
 .details-container {
     margin-bottom: 10px
@@ -388,4 +405,7 @@ body {
     display: block;
     content: '';
     height: 15px
+}
+#container {
+    margin-left: 20px;
 }

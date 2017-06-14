@@ -122,6 +122,7 @@
                   <%= ability.name %>.
                 </strong>
                 <%= ability.desc %>
+                (<%= ability.id %>)
               </p>
           <% end %>
       <% end %>
@@ -139,6 +140,7 @@
                 <% else %>
                     <strong><%= action.name %>.</strong> <%= action.desc %>
                 <% end %>
+                (<%= action.id %>)
               </p>
           <% end %>
       <% end %>
@@ -163,6 +165,7 @@
                     <% else %>
                         <strong><%= legendary_action.name %>.</strong> <%= legendary_action.desc %>
                     <% end %>
+                    (<%= legendary_action.id %>)
                   </p>
               <% end %>
           <% end %>
@@ -183,9 +186,11 @@
                         <strong><%= reaction.name %>.</strong> <%= reaction.desc %>
                     <% end %>
                 <% end %>
+                (<%= reaction.id %>)
               </p>
           <% end %>
       <% end %>
     </div>
   </div>
+  <div>Creature ID: <%= @creature.id %></div>
 </div>

@@ -1,0 +1,35 @@
+<div id="container">
+  <h1>Encounter: <%= @encounter.name %></h1>
+  <p><%= @encounter.description %></p>
+  <h3>Combatants</h3>
+  <div id="combatants">
+    <% @combatants = @encounter.combatants.order(initiative: :desc) %>
+    <div id="initiative_order">
+      <table>
+        <% @combatants.each do |combatant| %>
+            <tr>
+              <td><%= combatant.initiative %></td>
+              <td><a href="/statblock/<%= combatant.creature_id %>" class="entity" target="_blank"><%= combatant.creature.name %></a></td></tr>
+        <% end %>
+      </table>
+    </div>
+    <div id="edit-initiative" style="display: none;">
+      <form id="edit_initiative_form" action="/edit_initiative/<%= @encounter.id %>" method="post"> 
+        <table>
+          <% @combatants.each do |combatant| %>
+          <tr>
+            <td><input class="tb-small" type="text" name="initiative[<%= combatant.creature_id %>]" value="<%= combatant.initiative %>"/></td>
+            <td><%= combatant.creature.name %></td></tr>
+          <% end %>
+        </table>
+        <p><input type="submit" value="Update" /> </p>
+      </form>
+    </div>
+    <p>
+      <a id="update-initiative" href="#">Update Initiative</a>
+    </p>
+  </div>
+  <p>
+    <a href="/add_combatants/<%= @encounter.id %>">Add/Edit Combatants</a>
+  </p>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321145248) do
+ActiveRecord::Schema.define(version: 20170323174835) do
 
   create_table "actions", force: :cascade do |t|
     t.string  "name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20170321145248) do
     t.integer "to_hit",      default: 0
     t.string  "damage"
     t.integer "creature_id"
+  end
+
+  create_table "combatants", force: :cascade do |t|
+    t.integer "encounter_id"
+    t.integer "creature_id"
+    t.integer "initiative"
+    t.integer "round",        default: 0
+    t.integer "health"
+    t.string  "notes"
   end
 
   create_table "creatures", force: :cascade do |t|
@@ -50,6 +59,12 @@ ActiveRecord::Schema.define(version: 20170321145248) do
     t.boolean "pc"
     t.boolean "npc"
     t.boolean "monster"
+  end
+
+  create_table "encounters", force: :cascade do |t|
+    t.string  "name"
+    t.string  "description"
+    t.integer "turn"
   end
 
   create_table "special_abilities", force: :cascade do |t|

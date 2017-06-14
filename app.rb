@@ -5,6 +5,7 @@ require 'sqlite3'
 require 'require_all'
 require 'shotgun'
 require 'tux'
+require 'json'
 # require 'recursive-open-struct'
 require_relative 'public/data/monsters'
 require_rel 'models'
@@ -32,7 +33,13 @@ helpers do
 end
 
 get '/' do
+  @title = 'Advantage'
   erb :index
+end
+
+post '/encounter/new' do
+  @encounter = Encounter.find_or_create_by(name: params[:name])
+  @encounter.update(description: params[:desc])
 end
 
 post '/player/new' do
@@ -51,7 +58,39 @@ post '/monster/new' do
                    alignment: params[:alignment], monster: true)
 end
 
-get '/monster/:id' do
+get '/statblock/:id' do
   @creature = Creature.find(params[:id])
+  @title = @creature.name
   erb :statblock
 end
+
+get '/encounters' do
+  @title = 'Encounters'
+  erb :encounters
+end
+
+get '/encounter/:id' do
+  @encounter = Encounter.find(params[:id])
+  @title = "Encounter: #{@encounter.name}"
+  erb :encounter
+end
+
+post "/edit_initiative/:id" do
+  params[:initiative].each_pair do |creature_id, initiative|
+    combatant = Combatant.where(encounter_id: params[:id], creature_id: creature_id).first
+    combatant.update(initiative: initiative)
+  end
+  redirect "/encounter/#{params[:id]}"
+end
+
+get '/dice' do
+  erb :dice
+end
+
+get '/creatures' do
+  content_type :json
+  keyword = "%#{params[:term]}%"
+  @creature_names = Creature.where("name LIKE ?", keyword).collect(&:name)
+  @creature_names.to_json
+end
+

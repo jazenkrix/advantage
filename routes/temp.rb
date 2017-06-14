@@ -1,75 +1,68 @@
+get '/ability/update' do
+  SpecialAbility.update(302, desc: "The lich is an 18th-level spellcaster. Its spellcasting ability is Intelligence (spell save DC 20, +12 to hit with spell attacks). The lich has the following wizard spells prepared:<b><br>Cantrips (at will): <i>mage hand, prestidigitation, ray of frost</i><br> 1st level (4 slots): <i>detect magic, magic missile, shield, thunderwave</i><br> 2nd level (3 slots): <i>detect thoughts, invisibility, Melf's acid arrow, mirror image</i><br> 3rd level (3 slots): <i>animate dead, counterspell, dispel magic, fireball</i><br> 4th level (3 slots): <i>blight, dimension door</i><br> 5th level (3 slots): <i>cloudkill, scrying</i><br> 6th level (1 slot): <i>disintegrate, globe of invulnerability</i><br> 7th level (1 slot): <i>finger of death, plane shift</i><br> 8th level (1 slot): <i>dominate monster, power word stun</i><br> 9th level (1 slot): <i>power word kill</i>")
+  redirect '/'
+end
+
 get '/sandbox/:id' do
   @creature = Creature.find(params[:id])
   erb :statblock
 end
 
 get '/monster/process' do
-    @creature = Creature.find_or_create_by(name: 'Intellect Devourer')
+    @creature = Creature.find_or_create_by(name: 'Harshnag')
 
-    @creature.update(armor_class: '12',
-                     hit_points: '21',
-                     hit_dice: '6d4',
+    @creature.update(armor_class: '21',
+                     armor_type: '+3 plate',
+                     hit_points: '204',
+                     hit_dice: '12d12',
                      speed: '40 ft.',
-                     strength: 6,
-                     dexterity: 14,
-                     constitution: 13,
-                     intelligence: 12,
-                     wisdom: 11,
-                     charisma: 10,
-                     saving_throws: '',
-                     skills: 'Perception +2, Stealth +4',
+                     strength: 23,
+                     dexterity: 9,
+                     constitution: 21,
+                     intelligence: 9,
+                     wisdom: 10,
+                     charisma: 12,
+                     saving_throws: 'Con +8, Wis +3, Cha +4',
+                     skills: 'Athletics +9, Perception +3',
                      dmg_vulnerabilities: '',
-                     dmg_resistances: ' bludgeoning, piercing, and slashing from nonmagical attacks',
-                     dmg_immunities: '',
-                     con_immunities: 'blinded',
-                     senses: 'blindsight 60 ft. (blind beyond this radius), passive Perception 12',
-                     languages: "understands Deep Speech but can't speak, telepathy 60 ft.",
-                     challenge_rating: '2',
-                     monster: true)
+                     dmg_resistances: '',
+                     dmg_immunities: 'cold',
+                     con_immunities: '',
+                     senses: 'passive Perception 13',
+                     languages: "Common, Giant",
+                     challenge_rating: '9',
+                     npc: true)
 
-    @special_ability = SpecialAbility.find_or_create_by(name: 'Detect Sentience', creature_id: @creature.id)
-    @special_ability.update(desc: 'The intellect devourer can sense the presence and location of any creature within 300
-                                  feet of it that has an Intelligence of 3 or higher, regardless of interposing barriers,
-                                  unless the creature is protected by a <i>mind blank</i> spell.')
+    @special_ability = SpecialAbility.find_or_create_by(name: 'Legendary Resistance', creature_id: @creature.id)
+    @special_ability.update(desc: 'Once per day, when Harshnag fails a saving throw, he can choose to succeed instead.')
+
+    @special_ability = SpecialAbility.find_or_create_by(name: 'Special Equipment', creature_id: @creature.id)
+    @special_ability.update(desc: "Harshnag wears a suit of +3 plate armor and wields Gurt's greataxe.")
 
     @action = Action.find_or_create_by(name: 'Multiattack', creature_id: @creature.id)
     @action.update(action_type: 'Attack',
-                   desc: "The intellect devourer make one attack with its claws and uses Devour Intellect",
+                   desc: "Harshnag makes two Gurt's greataxe attacks.",
                    to_hit: nil,
                    damage: '')
 
-    @action = Action.find_or_create_by(name: 'Claws', creature_id: @creature.id)
+    @action = Action.find_or_create_by(name: "Gurt's Greataxe", creature_id: @creature.id)
     @action.update(action_type: 'Attack',
-                   desc: "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 7 (2d4 + 2) slashing damage.",
-                   to_hit: 4,
-                   damage: '2d4+2/slashing')
+                   desc: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 26 (3d12 + 7) slashing damage.",
+                   to_hit: 11,
+                   damage: '3d12+7/slashing')
 
-    @action = Action.find_or_create_by(name: 'Devour Intellect', creature_id: @creature.id)
+    @action = Action.find_or_create_by(name: "Gurt's Greataxe vs. Humans", creature_id: @creature.id)
     @action.update(action_type: 'Attack',
-                   desc: "The intellect devourer targets one creature it can see within 10 feet of it that has a brain. The
-                         target must succeed on a CD 12 INtelligence saving throw against this magic or take 11 (2d10) psychic
-                         damage. Also on a failure, roll 3d6: If the total equals or exceeds the target's Intelligence score,
-                         that score is reduced to 0. The target is stunned until it regains at least one point of Intelligence.",
-                   to_hit: nil,
-                   damage: '2d10/psychic')
+                   desc: "Melee Weapon Attack: +11 to hit, reach 10 ft., one target. Hit: 39 (5d12 + 7) slashing damage.",
+                   to_hit: 11,
+                   damage: '5d12+7/slashing')
 
-    @action = Action.find_or_create_by(name: 'Body Thief', creature_id: @creature.id)
+    @action = Action.find_or_create_by(name: 'Rock', creature_id: @creature.id)
     @action.update(action_type: 'Attack',
-                   desc: "The intellect devourer initiates an Intelligence contest with an incapacitated humanoid within
-                         5 feet of it that isn't protected by <i>protection from evil and good</i>. If it wins the contest,
-                         the intellect devourer magically consumes the target's brain, teleports into the skull, and take
-                         control of the body. While there, the intellect devourer has total cover against attacks and other
-                         effects originating outside its host. The intellect devourer retains its Intelligence, Wisdom,
-                         and Charisma scores, as well as its understanding of Deep Speech, its telepathy, and its traits.
-                         It otherwise adopts the target's statistics. It knows everything the creature knew, including
-                         spells and languages.<br><br>If the host body dies, the intellect devourer must leave it. A
-                         <i>protection from evil and good</i> spell cast on the body drives the intellect devourer out.
-                         The intellect devourer is also forced out it the target regains its devoured brain by means of
-                         a <i>wish<i>. By spending 5 feet of its movement, the intellect devourer can voluntarily leave
-                         the body, teleporting to the nearest unoccupied space within 5 feet of it. The body then dies,
-                         unless its brain is restored within 1 round.",
-                   to_hit: nil,
-                   damage: '2d10/psychic')
+                   desc: "Ranged Weapon Attack: +9 to hit, Range 60/240 ft., one target. Hit: 28 (4d10 + 6) bludgeoning damage.",
+                   to_hit: 9,
+                   damage: '4d10+6/bludgeoning')
+
   erb :statblock
 end
 
